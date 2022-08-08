@@ -94,8 +94,17 @@ class Data(Dataset):
         self.randomflip = RandomFlip()
         self.resize     = Resize(352, 352)
         self.totensor   = ToTensor()
+        
+        samples_path = cfg.datapath+'/'+cfg.mode+'.txt'
+        
+        if not os.path.exists(samples_path):
+            imgs_dir = os.path.join(cfg.datapath, 'image')
+            files = os.listdir(imgs_dir)
+            files = [f_path.replace('.jpg', '').replace('.png', '') + '\n' for f_path in files if '.jpg' in f_path]
+            with open(samples_path, 'w') as sp:
+                sp.writelines(files)
 
-        with open(cfg.datapath+'/'+cfg.mode+'.txt', 'r') as lines:
+        with open(samples_path, 'r') as lines:
             self.samples = []
             for line in lines:
                 self.samples.append(line.strip())
