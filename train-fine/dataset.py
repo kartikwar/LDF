@@ -102,7 +102,8 @@ class Data(Dataset):
 
     def __getitem__(self, idx):
         name  = self.samples[idx]
-        image = cv2.imread(self.cfg.datapath+'/image/'+name+'.jpg')[:,:,::-1].astype(np.float32)
+        img_path = self.cfg.datapath+'/image/'+name+'.jpg'
+        image = cv2.imread(img_path)[:,:,::-1].astype(np.float32)
 
         if self.cfg.mode=='train':
             mask  = cv2.imread(self.cfg.datapath+'/mask/' +name+'.png', 0).astype(np.float32)

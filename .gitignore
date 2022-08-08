@@ -1,2 +1,6 @@
 ldf-env/
 train-fine/out/model-40
+*.pth
+.vscode/
+eval/maps/
+data/test-800/

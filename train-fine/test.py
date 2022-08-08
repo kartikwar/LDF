@@ -41,6 +41,6 @@ class Test(object):
 
 
 if __name__=='__main__':
-    for path in ['../data/ECSSD', '../data/PASCAL-S', '../data/DUTS', '../data/HKU-IS', '../data/DUT-OMRON', '../data/THUR15K']:
+    for path in ['../data/test-800']:
         t = Test(dataset, LDF, path)
         t.save()
